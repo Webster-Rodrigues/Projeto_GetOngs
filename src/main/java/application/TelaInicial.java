@@ -72,7 +72,9 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcUsuarioLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcUsuarioLoginButtonActionPerformed
-        // TODO add your handling code here:
+        TelaUsuario tu = new TelaUsuario();
+        tu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_opcUsuarioLoginButtonActionPerformed
 
     private void opcLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcLoginButtonActionPerformed

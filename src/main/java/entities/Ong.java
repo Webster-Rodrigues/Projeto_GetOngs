@@ -111,6 +111,16 @@ public class Ong {
         this.site = site;
     }
 
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+    
+    
+
     
        
     

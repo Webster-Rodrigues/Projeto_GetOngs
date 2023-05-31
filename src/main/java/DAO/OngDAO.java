@@ -12,7 +12,7 @@ import java.util.List;
 public class OngDAO {
     
     
-    /*public boolean verificarOng(Ong ong)  throws Exception {
+    /*public boolean verificarOng(Ong ong)  throws Exceptiodfnhgsh-n {
         
         String sql = "select * from tb_ongs";
            
@@ -35,32 +35,39 @@ public class OngDAO {
     }*/
     
     
-    public List<Ong> buscarOngs() throws Exception {
-        String sql = "SELECT * FROM tb_curso"; //consulta no Banco de dados
+    /*public List<Ong> buscarOngs() throws Exception {
+        String sql = "SELECT * FROM tb_ongs"; //consulta no Banco de dados
         try (Connection conn = LoginConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(
-                sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); 
-                ResultSet rs = ps.executeQuery()){
-            int sizeLista = rs.last() ? rs.getRow() : 0;
-            
-            List<Ong> ongs = new ArrayList<>();
-            rs.beforeFirst();
-            
-            while(rs.next()){
-                int id = rs.getInt("id");
-                String nome = rs.getString("nome");
-                String email = rs.getString("email");
-                String estado = rs.getString("estado");
-                String uf = rs.getString("UF");
-                String telefone = rs.getString("telefone");
-                String causa = rs.getString("causa");
-                String cnpj = rs.getString("cnpj");
-                String site = rs.getString("site");
-                
-                Ong ong = new Ong(id, nome, email, estado, uf, telefone, causa, cnpj, site);
-                ongs.add(id, ong);
+                sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); */
+    
+    
+    public List<Ong> buscarOngs() throws Exception {
+        String sql = "SELECT * FROM tb_ongs"; //consulta no Banco de dados
+        List<Ong> ongs = new ArrayList<>();
+        try (Connection conn = LoginConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
+
+            try (ResultSet rs = ps.executeQuery()){
+                while (rs.next()){
+                    int id = rs.getInt("id");
+                    String nome = rs.getString("nome");
+                    String email = rs.getString("email");
+                    String estado = rs.getString("estado");
+                    String uf = rs.getString("UF");
+                    String telefone = rs.getString("telefone");
+                    String causa = rs.getString("causa");
+                    String cnpj = rs.getString("cnpj");
+                    String site = rs.getString("site");
+                    ongs.add(new Ong (id, nome, email, estado, uf, telefone, causa, cnpj, site));
+                }
             }
-            
-            return ongs;  
         }
+        return ongs;
     }
+            
+        
+    
+    
+    
+    
+    
 }
