@@ -21,6 +21,7 @@ public class OngTableModel extends AbstractTableModel {
     public int getRowCount() {
         return ongs.size();
     }
+    
 
     @Override
     public int getColumnCount() {
@@ -58,6 +59,10 @@ public class OngTableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         return this.colunas[column];
     }
+    
+    
+
+    
 
 
     

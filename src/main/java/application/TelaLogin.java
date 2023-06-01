@@ -97,6 +97,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
         this.dispose();
+        TelaInicial tl = new TelaInicial();
+        tl.setVisible(true);
     }//GEN-LAST:event_sairButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
@@ -109,8 +111,10 @@ public class TelaLogin extends javax.swing.JFrame {
      
         try{
             if(dao.verificaAdm(administrador)){
-                this.dispose();
                 JOptionPane.showMessageDialog(null, "Bem-vindo administrador " + String.valueOf(dao.exibirAdm(login)));
+                TelaAdministrador tladm = new TelaAdministrador();
+                tladm.setVisible(true);
+                this.dispose();
                 
             }
             else{

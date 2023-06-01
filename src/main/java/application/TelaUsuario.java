@@ -1,10 +1,8 @@
 
 package application;
 
-import DAO.OngDAO;
 import entities.OngTableModel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class TelaUsuario extends javax.swing.JFrame {
 
@@ -14,15 +12,10 @@ public class TelaUsuario extends javax.swing.JFrame {
     public TelaUsuario() {
         super("Listagem das Ongs");
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
-        try {
-           this.usuarioTable.setModel(new OngTableModel());
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Falha ao buscar as ONGs cadastradas.");
-        }
-        
+        carregarTabela();
+                
     }
 
     /**
@@ -41,11 +34,10 @@ public class TelaUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         usuarioPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Listagem das ONGs"));
+        usuarioPanel.setPreferredSize(new java.awt.Dimension(1000, 582));
 
         usuarioTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null}
             },
@@ -53,23 +45,24 @@ public class TelaUsuario extends javax.swing.JFrame {
                 "ID", "Nome", "Email", "Estado", "UF", "Telefone", "Causa", "CNPJ", "Site"
             }
         ));
+        usuarioTable.setPreferredSize(new java.awt.Dimension(1000, 80));
         jScrollPane1.setViewportView(usuarioTable);
 
         javax.swing.GroupLayout usuarioPanelLayout = new javax.swing.GroupLayout(usuarioPanel);
         usuarioPanel.setLayout(usuarioPanelLayout);
         usuarioPanelLayout.setHorizontalGroup(
             usuarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioPanelLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(usuarioPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1260, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
         );
         usuarioPanelLayout.setVerticalGroup(
             usuarioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(usuarioPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioPanelLayout.createSequentialGroup()
+                .addContainerGap(131, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -77,15 +70,15 @@ public class TelaUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(usuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(usuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(usuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(usuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -128,27 +121,27 @@ public class TelaUsuario extends javax.swing.JFrame {
         });
     }
     
-    /*public void carregarTabela(){
-        
-        DefaultTableModel dtm = (DefaultTableModel) usuarioTable.getModel();
-        dtm.setNumRows(0); //toda vez que chamar a tabela ele zera as linhas p/ não duplicar
-        
-        usuarioTable.getColumnModel().getColumn(0);
-        
-        
-     
-        
-        try{
-            OngDAO dao = new OngDAO();
-            dao.buscarOngs();
+    public void carregarTabela(){
+        try {
+           this.usuarioTable.setModel(new OngTableModel());
+           this.usuarioTable.getColumnModel().getColumn(0).setPreferredWidth(1);
+           this.usuarioTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+           this.usuarioTable.getColumnModel().getColumn(2).setPreferredWidth(150);
+           this.usuarioTable.getColumnModel().getColumn(3).setPreferredWidth(70);
+           this.usuarioTable.getColumnModel().getColumn(4).setPreferredWidth(1);
+           this.usuarioTable.getColumnModel().getColumn(5).setPreferredWidth(70);
+           this.usuarioTable.getColumnModel().getColumn(6).setPreferredWidth(200);
+           this.usuarioTable.getColumnModel().getColumn(7).setPreferredWidth(90);
+           this.usuarioTable.getColumnModel().getColumn(8).setPreferredWidth(100);
+           
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Não foi possível carregar aas ONGs\n" + e);
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha ao buscar as ONGs cadastradas.");
         }
-        
-        
-        
-    }*/
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

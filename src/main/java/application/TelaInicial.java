@@ -30,6 +30,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         opcLoginButton = new javax.swing.JButton();
         opcUsuarioLoginButton = new javax.swing.JButton();
+        sairTotalButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,25 +48,39 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        sairTotalButton.setText("Sair");
+        sairTotalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairTotalButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(opcLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                    .addComponent(opcUsuarioLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(opcLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                            .addComponent(opcUsuarioLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(sairTotalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(150, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(119, 119, 119)
                 .addComponent(opcLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(28, 28, 28)
                 .addComponent(opcUsuarioLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(sairTotalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,10 +93,16 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_opcUsuarioLoginButtonActionPerformed
 
     private void opcLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcLoginButtonActionPerformed
-        new TelaLogin().setVisible(true); //puxa outro frame a partir de um botão
+        new TelaLogin().setVisible(true);
+        this.dispose();
+        //puxa outro frame a partir de um botão
         /*TelaLogin tl = new TelaLogin();
         tl.setVisible(true); Outra maneira de chamar outra tela*/
     }//GEN-LAST:event_opcLoginButtonActionPerformed
+
+    private void sairTotalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairTotalButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_sairTotalButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,5 +143,6 @@ public class TelaInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton opcLoginButton;
     private javax.swing.JButton opcUsuarioLoginButton;
+    private javax.swing.JButton sairTotalButton;
     // End of variables declaration//GEN-END:variables
 }
