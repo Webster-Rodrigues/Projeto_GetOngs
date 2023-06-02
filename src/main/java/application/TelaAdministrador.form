@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="admMenuBar">
       <SubComponents>
@@ -9,24 +9,27 @@
             <Property name="text" type="java.lang.String" value="Administradores"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="cadAdmMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="removerAdmMenuItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\WEBSTER\Documents\NetBeansProjects\ProjetoA3\src\main\java\icons\user_delete.png"/>
+                  <Image iconType="3" name="/imagens/user_delete.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Remover Administrador"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadAdmMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removerAdmMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="removerAdmMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="cadAdmMenuItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\WEBSTER\Documents\NetBeansProjects\ProjetoA3\src\main\java\icons\user_add.png"/>
+                  <Image iconType="3" name="/imagens/user_add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Adicionar Administrador"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadAdmMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -38,15 +41,18 @@
             <MenuItem class="javax.swing.JMenuItem" name="addOngMenuItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\WEBSTER\Documents\NetBeansProjects\ProjetoA3\src\main\java\icons\group_add.png"/>
+                  <Image iconType="3" name="/imagens/group_add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Adicionar nova ONG"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addOngMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editarOngMenuItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\WEBSTER\Documents\NetBeansProjects\ProjetoA3\src\main\java\icons\group_edit.png"/>
+                  <Image iconType="3" name="/imagens/group_edit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Editar ONG"/>
               </Properties>
@@ -57,7 +63,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="removeOngMenuItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\WEBSTER\Documents\NetBeansProjects\ProjetoA3\src\main\java\icons\group_delete.png"/>
+                  <Image iconType="3" name="/imagens/group_delete.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Remover ONG"/>
               </Properties>

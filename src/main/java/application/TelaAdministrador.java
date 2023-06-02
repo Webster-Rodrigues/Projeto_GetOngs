@@ -38,8 +38,8 @@ public class TelaAdministrador extends javax.swing.JFrame {
         admTable = new javax.swing.JTable();
         admMenuBar = new javax.swing.JMenuBar();
         admMenu = new javax.swing.JMenu();
-        cadAdmMenuItem = new javax.swing.JMenuItem();
         removerAdmMenuItem = new javax.swing.JMenuItem();
+        cadAdmMenuItem = new javax.swing.JMenuItem();
         ongsMenu = new javax.swing.JMenu();
         addOngMenuItem = new javax.swing.JMenuItem();
         editarOngMenuItem = new javax.swing.JMenuItem();
@@ -81,8 +81,17 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
         admMenu.setText("Administradores");
 
-        cadAdmMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\WEBSTER\\Documents\\NetBeansProjects\\ProjetoA3\\src\\main\\java\\icons\\user_delete.png")); // NOI18N
-        cadAdmMenuItem.setText("Remover Administrador");
+        removerAdmMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user_delete.png"))); // NOI18N
+        removerAdmMenuItem.setText("Remover Administrador");
+        removerAdmMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerAdmMenuItemActionPerformed(evt);
+            }
+        });
+        admMenu.add(removerAdmMenuItem);
+
+        cadAdmMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user_add.png"))); // NOI18N
+        cadAdmMenuItem.setText("Adicionar Administrador");
         cadAdmMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadAdmMenuItemActionPerformed(evt);
@@ -90,19 +99,20 @@ public class TelaAdministrador extends javax.swing.JFrame {
         });
         admMenu.add(cadAdmMenuItem);
 
-        removerAdmMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\WEBSTER\\Documents\\NetBeansProjects\\ProjetoA3\\src\\main\\java\\icons\\user_add.png")); // NOI18N
-        removerAdmMenuItem.setText("Adicionar Administrador");
-        admMenu.add(removerAdmMenuItem);
-
         admMenuBar.add(admMenu);
 
         ongsMenu.setText("ONGs");
 
-        addOngMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\WEBSTER\\Documents\\NetBeansProjects\\ProjetoA3\\src\\main\\java\\icons\\group_add.png")); // NOI18N
+        addOngMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/group_add.png"))); // NOI18N
         addOngMenuItem.setText("Adicionar nova ONG");
+        addOngMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addOngMenuItemActionPerformed(evt);
+            }
+        });
         ongsMenu.add(addOngMenuItem);
 
-        editarOngMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\WEBSTER\\Documents\\NetBeansProjects\\ProjetoA3\\src\\main\\java\\icons\\group_edit.png")); // NOI18N
+        editarOngMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/group_edit.png"))); // NOI18N
         editarOngMenuItem.setText("Editar ONG");
         editarOngMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +121,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
         });
         ongsMenu.add(editarOngMenuItem);
 
-        removeOngMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\WEBSTER\\Documents\\NetBeansProjects\\ProjetoA3\\src\\main\\java\\icons\\group_delete.png")); // NOI18N
+        removeOngMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/group_delete.png"))); // NOI18N
         removeOngMenuItem.setText("Remover ONG");
         ongsMenu.add(removeOngMenuItem);
 
@@ -143,13 +153,23 @@ public class TelaAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cadAdmMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadAdmMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cadAdmMenuItemActionPerformed
+    private void removerAdmMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerAdmMenuItemActionPerformed
+        TelaRemoveAdm admDelet = new TelaRemoveAdm();
+        admDelet.setVisible(true);
+    }//GEN-LAST:event_removerAdmMenuItemActionPerformed
 
     private void editarOngMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarOngMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editarOngMenuItemActionPerformed
+
+    private void cadAdmMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadAdmMenuItemActionPerformed
+        TelaAddAdm admAdd = new TelaAddAdm();
+        admAdd.setVisible(true);
+    }//GEN-LAST:event_cadAdmMenuItemActionPerformed
+
+    private void addOngMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOngMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addOngMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
