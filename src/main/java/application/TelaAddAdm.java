@@ -4,6 +4,11 @@
  */
 package application;
 
+import DAO.AdmDAO;
+import entities.Administradores;
+import entities.AdmsTableModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author WEBSTER
@@ -14,9 +19,10 @@ public class TelaAddAdm extends javax.swing.JFrame {
      * Creates new form TelaAddAdm
      */
     public TelaAddAdm() {
-        super("Gerenciamente de Administradores");
+        super("Cadastro de Administradores");
         initComponents();
         this.setLocationRelativeTo(null);
+        carregarTabelaAdms();
     }
 
     /**
@@ -62,6 +68,11 @@ public class TelaAddAdm extends javax.swing.JFrame {
         nomeAddLabel.setText("Nome");
 
         salvarButton.setText("Salvar");
+        salvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarButtonActionPerformed(evt);
+            }
+        });
 
         voltarButton.setText("Voltar");
         voltarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +154,30 @@ public class TelaAddAdm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
+    private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
+        String login = loginAddTextField.getText();
+        String senha = String.valueOf(addPasswordField.getText());
+        String nome = nomeAddTextField.getText();
+
+        try{
+            Administradores adm = new Administradores(login, senha, nome);
+            AdmDAO dao = new AdmDAO();
+            if(dao.verificaAdm(adm)){
+                JOptionPane.showMessageDialog(null, "Administrador existente");
+                
+            }
+            
+            else{
+                dao.addAdms(adm);
+                this.administradoresTable.setModel(new AdmsTableModel());
+            }    
+        }
+        
+        catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o administrador");
+        }
+    }//GEN-LAST:event_salvarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,6 +211,20 @@ public class TelaAddAdm extends javax.swing.JFrame {
                 new TelaAddAdm().setVisible(true);
             }
         });
+    }
+    
+    public void carregarTabelaAdms(){
+         try {
+           this.administradoresTable.setModel(new AdmsTableModel());
+           this.administradoresTable.getColumnModel().getColumn(0).setPreferredWidth(5);
+           this.administradoresTable.getColumnModel().getColumn(1).setPreferredWidth(50);
+           this.administradoresTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+           this.administradoresTable.getColumnModel().getColumn(3).setPreferredWidth(70);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha ao buscar os administradores cadastrados.");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,7 +1,7 @@
 
 package DAO;
 
-import database.LoginConnectionFactory;
+import database.ConnectionFactory;
 import entities.Ong;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,7 +44,7 @@ public class OngDAO {
     public List<Ong> buscarOngs() throws Exception {
         String sql = "SELECT * FROM tb_ongs"; //consulta no Banco de dados
         List<Ong> ongs = new ArrayList<>();
-        try (Connection conn = LoginConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
+        try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
 
             try (ResultSet rs = ps.executeQuery()){
                 while (rs.next()){

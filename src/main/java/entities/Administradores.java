@@ -3,7 +3,7 @@ package entities;
 
 
 public class Administradores {
-    
+    private int id;
     public String nome;
     private String login;
     private String senha;
@@ -21,6 +21,33 @@ public class Administradores {
 
     }
 
+    public Administradores(String login, String senha, String nome) {
+        this.login = login;
+        this.senha = senha;
+        this.nome = nome;
+    }
+
+
+    public Administradores(int id, String nome, String login, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+    }
+
+    public Administradores(int id) {
+        this.id = id;
+    }
+    
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -46,6 +73,7 @@ public class Administradores {
     public String toString(){
         return nome;
     }
+
 
     
     

@@ -4,7 +4,7 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class LoginConnectionFactory {
+public class ConnectionFactory {
     
     private static String host = "127.0.0.1";
     private static String porta = "3306";

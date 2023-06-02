@@ -4,6 +4,14 @@
  */
 package application;
 
+import DAO.AdmDAO;
+import entities.Administradores;
+import entities.AdmsTableModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author WEBSTER
@@ -14,7 +22,11 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
      * Creates new form TelaRemoveAdm
      */
     public TelaRemoveAdm() {
+        super("Exclusão de Administradores");
         initComponents();
+        carregarTabelaAdms();
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -29,10 +41,10 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         administradoresTable = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         deletarAdmButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
+        removeIdTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(588, 423));
@@ -48,11 +60,15 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(administradoresTable);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Informe o ID do administrador que deseja excluir");
 
         deletarAdmButton.setText("Deletar Administrador");
+        deletarAdmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarAdmButtonActionPerformed(evt);
+            }
+        });
 
         voltarButton.setText("Voltar");
         voltarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,8 +89,8 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(51, 51, 51)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(35, 35, 35)
+                                .addComponent(removeIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addComponent(deletarAdmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -88,13 +104,13 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(voltarButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
                 .addComponent(deletarAdmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
@@ -116,6 +132,10 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void deletarAdmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarAdmButtonActionPerformed
+        deletarAdm();
+    }//GEN-LAST:event_deletarAdmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,14 +171,52 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void carregarTabelaAdms(){
+        try {
+           this.administradoresTable.setModel(new AdmsTableModel());
+           this.administradoresTable.getColumnModel().getColumn(0).setPreferredWidth(5);
+           this.administradoresTable.getColumnModel().getColumn(1).setPreferredWidth(50);
+           this.administradoresTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+           this.administradoresTable.getColumnModel().getColumn(3).setPreferredWidth(70);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha ao buscar os administradores cadastrados.");
+        }
+    }
+    
+    public void deletarAdm(){
+        AdmDAO dao = new AdmDAO();
+        
+        
+        try{
+
+            int id = Integer.parseInt(removeIdTextField.getText());
+            Administradores adm = new Administradores(id);
+            adm.setId(id);
+
+            dao.excluirAdm(adm);
+            this.administradoresTable.setModel(new AdmsTableModel());
+            JOptionPane.showMessageDialog (null, "Administrador excluído com sucesso.");
+        }
+        
+        catch(Exception e){
+            Logger.getLogger(TelaRemoveAdm.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog (null, "Erro.");
+        }
+    }
+    
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable administradoresTable;
     private javax.swing.JButton deletarAdmButton;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField removeIdTextField;
     private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

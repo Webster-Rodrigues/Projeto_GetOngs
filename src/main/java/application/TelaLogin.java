@@ -4,7 +4,7 @@
  */
 package application;
 
-import DAO.LoginDAO;
+import DAO.AdmDAO;
 import entities.Administradores;
 import javax.swing.JOptionPane;
 
@@ -107,7 +107,7 @@ public class TelaLogin extends javax.swing.JFrame {
         
         Administradores administrador  = new Administradores(login, senha);
 
-        LoginDAO dao = new LoginDAO();
+        AdmDAO dao = new AdmDAO();
      
         try{
             if(dao.verificaAdm(administrador)){
