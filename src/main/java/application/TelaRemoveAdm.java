@@ -47,7 +47,6 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
         removeIdTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(588, 423));
 
         administradoresTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,7 +187,6 @@ public class TelaRemoveAdm extends javax.swing.JFrame {
     
     public void deletarAdm(){
         AdmDAO dao = new AdmDAO();
-        
         
         try{
 

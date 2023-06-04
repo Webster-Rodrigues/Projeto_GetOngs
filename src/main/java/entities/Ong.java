@@ -9,7 +9,7 @@ public class Ong {
     private int id;
     private String nome;
     private String email;
-    private String estado;
+    private String cidade;
     private String uf;
     private String telefone;
     private String causa;
@@ -21,11 +21,11 @@ public class Ong {
         
     }
 
-    public Ong(int id, String nome, String email, String estado, String uf, String telefone, String causa, String cnpj, String site) {
+    public Ong(int id, String nome, String email, String cidade, String uf, String telefone, String causa, String cnpj, String site) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.estado = estado;
+        this.cidade = cidade;
         this.uf = uf;
         this.telefone = telefone;
         this.causa = causa;
@@ -33,15 +33,21 @@ public class Ong {
         this.site = site;
     }
 
-    public Ong(String nome, String email, String estado, String telefone, String causa, String cnpj, String site) {
+    public Ong(String nome, String email, String cidade, String uf, String telefone, String causa, String cnpj, String site) {
         this.nome = nome;
         this.email = email;
-        this.estado = estado;
+        this.cidade = cidade;
+        this.uf = uf;
         this.telefone = telefone;
         this.causa = causa;
         this.cnpj = cnpj;
         this.site = site;
     }
+
+    public Ong(String cnpj) {
+        this.cnpj = cnpj;
+    }
+    
 
     public Ong(int id) {
         this.id = id;
@@ -71,12 +77,12 @@ public class Ong {
         this.email = email;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getTelefone() {
@@ -117,6 +123,11 @@ public class Ong {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+    
+    @Override
+    public String toString(){
+        return nome;
     }
     
     

@@ -4,6 +4,7 @@
  */
 package application;
 
+import entities.AdmsTableModel;
 import entities.OngTableModel;
 import javax.swing.JOptionPane;
 
@@ -36,6 +37,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         admTable = new javax.swing.JTable();
+        attTabelaButton = new javax.swing.JButton();
         admMenuBar = new javax.swing.JMenuBar();
         admMenu = new javax.swing.JMenu();
         removerAdmMenuItem = new javax.swing.JMenuItem();
@@ -62,6 +64,13 @@ public class TelaAdministrador extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(admTable);
 
+        attTabelaButton.setText("ATUALIZAR ONGS");
+        attTabelaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attTabelaButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -69,14 +78,20 @@ public class TelaAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(attTabelaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(467, 467, 467))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(attTabelaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         admMenu.setText("Administradores");
@@ -123,6 +138,11 @@ public class TelaAdministrador extends javax.swing.JFrame {
 
         removeOngMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/group_delete.png"))); // NOI18N
         removeOngMenuItem.setText("Remover ONG");
+        removeOngMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeOngMenuItemActionPerformed(evt);
+            }
+        });
         ongsMenu.add(removeOngMenuItem);
 
         admMenuBar.add(ongsMenu);
@@ -136,8 +156,8 @@ public class TelaAdministrador extends javax.swing.JFrame {
             .addGap(0, 1265, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(19, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1228, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(18, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -145,8 +165,8 @@ public class TelaAdministrador extends javax.swing.JFrame {
             .addGap(0, 500, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(50, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(14, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(51, Short.MAX_VALUE)))
         );
 
@@ -168,8 +188,24 @@ public class TelaAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_cadAdmMenuItemActionPerformed
 
     private void addOngMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOngMenuItemActionPerformed
-        // TODO add your handling code here:
+        TelaAddOng tlAddOng = new TelaAddOng();
+        tlAddOng.setVisible(true);
     }//GEN-LAST:event_addOngMenuItemActionPerformed
+
+    private void removeOngMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeOngMenuItemActionPerformed
+        TelaRemoveOng removeOng = new TelaRemoveOng();
+        removeOng.setVisible(true);
+    }//GEN-LAST:event_removeOngMenuItemActionPerformed
+
+    private void attTabelaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attTabelaButtonActionPerformed
+        try{
+            carregarTabela();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Falha ao atualizar tabela.");
+        }
+        
+    }//GEN-LAST:event_attTabelaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +269,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu admMenu;
     private javax.swing.JMenuBar admMenuBar;
     private javax.swing.JTable admTable;
+    private javax.swing.JButton attTabelaButton;
     private javax.swing.JMenuItem cadAdmMenuItem;
     private javax.swing.JMenuItem editarOngMenuItem;
     private javax.swing.JPanel jPanel1;

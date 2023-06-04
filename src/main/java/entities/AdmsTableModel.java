@@ -47,5 +47,16 @@ public class AdmsTableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         return this.colunas[column];
     }
+    
+    
+    public void addAdm(Administradores adm) {
+        // Adiciona o registro.
+        adms.add(adm);
+        int ultimoIndice = getRowCount() - 1;
+        fireTableRowsInserted(ultimoIndice, ultimoIndice);
+    }
+    
+    
+    
 
 }

@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
 public class OngTableModel extends AbstractTableModel {
     
     private List<Ong> ongs;
-    private String[] colunas = {"ID", "NOME", "EMAIL", "Estado", "UF", "Telefone", "Causa", "CNPJ", "Site"};
+    private String[] colunas = {"ID", "NOME", "EMAIL", "CIDADE", "UF", "TELEFONE", "CAUSA", "CNPJ", "SITE"};
     
     //Refência a classe para busacar as ongs
     public OngTableModel() throws Exception {
@@ -39,7 +39,7 @@ public class OngTableModel extends AbstractTableModel {
             case 2:
                 return this.ongs.get(rowIndex).getEmail();  
             case 3:
-                return this.ongs.get(rowIndex).getEstado();
+                return this.ongs.get(rowIndex).getCidade();
             case 4:
                 return this.ongs.get(rowIndex).getUf();
             case 5:

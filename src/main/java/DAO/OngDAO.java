@@ -12,27 +12,21 @@ import java.util.List;
 public class OngDAO {
     
     
-    /*public boolean verificarOng(Ong ong)  throws Exceptiodfnhgsh-n {
+    public boolean verificarOng(Ong ong) throws Exception{
         
-        String sql = "select * from tb_ongs";
+        String sql = "select * from tb_ongs WHERE cnpj = ?";
            
-        try(Connection conn = LoginConnectionFactory.obtemConexao();
+        try(Connection conn = ConnectionFactory.obtemConexao();
             PreparedStatement ps = conn.prepareStatement(sql)){ 
             
-            ps.setInt(0,ong.getId());
-            ps.setString(0, ong.getNome());
-            ps.setString(0, ong.getEmail());
-            ps.setString(0, ong.getEstado());
-            ps.setString(0, ong.getTelefone());
-            ps.setString(0, ong.getCausa());
-            ps.setString(0, ong.getSite());
+            ps.setString(1, ong.getCnpj());
             
             try(ResultSet rs = ps.executeQuery()){
                 return rs.next();
             }
         }
         
-    }*/
+    }
     
     
     /*public List<Ong> buscarOngs() throws Exception {
@@ -51,17 +45,51 @@ public class OngDAO {
                     int id = rs.getInt("id");
                     String nome = rs.getString("nome");
                     String email = rs.getString("email");
-                    String estado = rs.getString("estado");
+                    String cidade = rs.getString("cidade");
                     String uf = rs.getString("UF");
                     String telefone = rs.getString("telefone");
                     String causa = rs.getString("causa");
                     String cnpj = rs.getString("cnpj");
                     String site = rs.getString("site");
-                    ongs.add(new Ong (id, nome, email, estado, uf, telefone, causa, cnpj, site));
+                    ongs.add(new Ong (id, nome, email, cidade, uf, telefone, causa, cnpj, site));
                 }
             }
         }
         return ongs;
+    }
+    
+    
+    public void addOng(Ong ong) throws Exception{
+        String sql = "INSERT INTO tb_ongs (nome, email, cidade, UF, telefone, causa, cnpj, site) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        try(Connection conn = ConnectionFactory.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)){
+            
+            
+            ps.setString(1, ong.getNome());
+            ps.setString(2, ong.getEmail());
+            ps.setString(3, ong.getCidade());
+            ps.setString(4, ong.getUf());
+            ps.setString(5, ong.getTelefone());
+            ps.setString(6, ong.getCausa());
+            ps.setString(7, ong.getCnpj());
+            ps.setString(8, ong.getSite());
+                        
+            ps.execute();
+            ps.close();
+        }
+                
+    }
+    
+    public void removeOng(Ong ong) throws Exception{
+        String sql = "DELETE FROM tb_ongs WHERE id = ?";
+        try (Connection c = ConnectionFactory.obtemConexao();
+            PreparedStatement ps = c.prepareStatement(sql)) {
+            
+            ps.setInt(1, ong.getId());
+            ps.execute();
+            ps.close();
+        }
     }
             
         

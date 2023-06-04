@@ -116,7 +116,7 @@ public class AdmDAO {
     
     
     // tentativa combobox NÃO DEU CERTO 
-    /*public Administradores[] obterIdAdm() throws Exception {
+    public Administradores[] obterIdAdm() throws Exception {
         String sql = "SELECT id FROM tb_administradores";
         try (Connection conn = ConnectionFactory.obtemConexao();
         PreparedStatement ps = conn.prepareStatement(sql,
@@ -129,13 +129,13 @@ public class AdmDAO {
             int contador = 0;
             
             while (rs.next()) {
-                int id = rs.getInt("nome");
+                int id = rs.getInt("id");
                 adms[contador++] = new Administradores(id); 
                 
             } 
             return adms;
         }
-    }*/
+    }
     
     
     
