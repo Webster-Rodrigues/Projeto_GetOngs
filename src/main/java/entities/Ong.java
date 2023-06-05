@@ -44,6 +44,24 @@ public class Ong {
         this.site = site;
     }
 
+    public Ong(int id, String nome, String email, String telefone, String causa, String cnpj, String site) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.causa = causa;
+        this.cnpj = cnpj;
+        this.site = site;
+    }
+    
+    
+
+    public Ong(String cidade, String uf) {
+        this.cidade = cidade;
+        this.uf = uf;
+    }
+    
+
     public Ong(String cnpj) {
         this.cnpj = cnpj;
     }

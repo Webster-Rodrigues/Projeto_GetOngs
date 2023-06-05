@@ -137,6 +137,27 @@ public class AdmDAO {
         }
     }
     
+    public void attIdColuna() throws Exception {
+        String sql = "ALTER TABLE tb_administradores  DROP id";
+        String sqlatt = "ALTER TABLE tb_administradores ADD id INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (id)";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.execute();
+            ps.close();
+        }
+        
+        try (Connection conn = ConnectionFactory.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sqlatt)) {
+            ps.execute();
+            ps.close();
+        }
+        
+    }
+    
+    
+    
+    
     
     
     

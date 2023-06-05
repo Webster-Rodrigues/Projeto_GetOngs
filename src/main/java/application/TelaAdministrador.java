@@ -4,6 +4,7 @@
  */
 package application;
 
+import DAO.OngDAO;
 import entities.AdmsTableModel;
 import entities.OngTableModel;
 import javax.swing.JOptionPane;
@@ -48,7 +49,6 @@ public class TelaAdministrador extends javax.swing.JFrame {
         removeOngMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1327, 773));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ongs"));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 582));
@@ -179,7 +179,8 @@ public class TelaAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_removerAdmMenuItemActionPerformed
 
     private void editarOngMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarOngMenuItemActionPerformed
-        // TODO add your handling code here:
+        TelaEditOng editong = new TelaEditOng();
+        editong.setVisible(true);
     }//GEN-LAST:event_editarOngMenuItemActionPerformed
 
     private void cadAdmMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadAdmMenuItemActionPerformed
@@ -200,6 +201,8 @@ public class TelaAdministrador extends javax.swing.JFrame {
     private void attTabelaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attTabelaButtonActionPerformed
         try{
             carregarTabela();
+            OngDAO dao = new OngDAO();
+            dao.attIdColuna();
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Falha ao atualizar tabela.");

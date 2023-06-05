@@ -35,9 +35,9 @@ public class AdmsTableModel extends AbstractTableModel {
             case 1:
                 return this.adms.get(rowIndex).getLogin();
             case 2:
-                return this.adms.get(rowIndex).getNome();  
+                return this.adms.get(rowIndex).getSenha();  
             case 3:
-                return this.adms.get(rowIndex).getSenha();          
+                return this.adms.get(rowIndex).getNome();      
             default:
                 return null;
         }

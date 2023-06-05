@@ -169,7 +169,10 @@ public class TelaAddAdm extends javax.swing.JFrame {
             
             else{
                 dao.addAdms(adm);
+                dao.attIdColuna();
                 this.administradoresTable.setModel(new AdmsTableModel());
+                limparCampos();
+                
             }    
         }
         
@@ -225,6 +228,12 @@ public class TelaAddAdm extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Falha ao buscar os administradores cadastrados.");
         }
+    }
+    
+    public void limparCampos(){
+        loginAddTextField.setText("");
+        nomeAddTextField.setText("");
+        addPasswordField.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

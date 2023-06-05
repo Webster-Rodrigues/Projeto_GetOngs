@@ -91,6 +91,47 @@ public class OngDAO {
             ps.close();
         }
     }
+    
+    public void attOngs(Ong ong)throws Exception{
+        String sql = "UPDATE tb_ongs SET nome = ?, email = ?, cidade = ?, uf = ?, telefone = ?, causa = ?, cnpj = ?, site = ? WHERE id = ?";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, ong.getNome());
+            ps.setString(2, ong.getEmail());
+            ps.setString(3, ong.getCidade());
+            ps.setString(4, ong.getUf());
+            ps.setString(5, ong.getTelefone());
+            ps.setString(6, ong.getCausa());
+            ps.setString(7, ong.getCnpj());
+            ps.setString(8, ong.getSite());
+            ps.setInt(9, ong.getId());
+            ps.execute();
+            ps.close();
+             
+         }
+    }
+    
+    public void attIdColuna() throws Exception {
+        String sql = "ALTER TABLE tb_ongs DROP id";
+        String sqlatt = "ALTER TABLE tb_ongs ADD id INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (id)";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.execute();
+            ps.close();
+        }
+        
+        try (Connection conn = ConnectionFactory.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sqlatt)) {
+            ps.execute();
+            ps.close();
+        }
+        
+    }
+        
+        //String sqlatt = "ALTER TABLE tb_ongs ADD id INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (id)";
             
         
     
