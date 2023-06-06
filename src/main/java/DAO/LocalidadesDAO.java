@@ -8,15 +8,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+
 
 
 public class LocalidadesDAO {
     
     public List<Cidades> buscarCidades() throws Exception {
-        String sql = "SELECT * FROM municipio"; //consulta no Banco de dados
+        String sql = "SELECT * FROM municipio ORDER BY nome ASC"; //consulta no Banco de dados
         List<Cidades> cidades = new ArrayList<>();
         try (Connection conn = ConnectionFactory.obtemConexao(); PreparedStatement ps = conn.prepareStatement(sql)){
             try (ResultSet rs = ps.executeQuery()){
@@ -51,5 +50,6 @@ public class LocalidadesDAO {
         }
         return ufs;
     }
+ 
     
 }

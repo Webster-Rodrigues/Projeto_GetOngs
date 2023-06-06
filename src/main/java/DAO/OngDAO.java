@@ -51,7 +51,8 @@ public class OngDAO {
                     String causa = rs.getString("causa");
                     String cnpj = rs.getString("cnpj");
                     String site = rs.getString("site");
-                    ongs.add(new Ong (id, nome, email, cidade, uf, telefone, causa, cnpj, site));
+                    String descricao = rs.getString("descricao");
+                    ongs.add(new Ong(id, nome, email, cidade, uf, telefone, causa, cnpj, site, descricao));
                 }
             }
         }
@@ -130,13 +131,24 @@ public class OngDAO {
         }
         
     }
+    
+    public void attDescricao(Ong ong)throws Exception{
         
-        //String sqlatt = "ALTER TABLE tb_ongs ADD id INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (id)";
+        String sql = "UPDATE tb_ongs SET descricao = ? WHERE id = ?";
+        
+        try (Connection conn = ConnectionFactory.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, ong.getDescricao());
+            ps.setInt(2, ong.getId());
+            ps.execute();
+            ps.close();
+        }
+        
+        
+    }
             
         
-    
-    
-    
-    
+ 
     
 }

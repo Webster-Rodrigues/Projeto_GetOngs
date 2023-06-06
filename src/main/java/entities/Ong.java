@@ -15,6 +15,7 @@ public class Ong {
     private String causa;
     private String cnpj;
     private String site;
+    private String descricao;
     
     
     public Ong(){
@@ -53,12 +54,18 @@ public class Ong {
         this.cnpj = cnpj;
         this.site = site;
     }
-    
-    
 
-    public Ong(String cidade, String uf) {
+    public Ong(int id, String nome, String email, String cidade, String uf, String telefone, String causa, String cnpj, String site, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
         this.cidade = cidade;
         this.uf = uf;
+        this.telefone = telefone;
+        this.causa = causa;
+        this.cnpj = cnpj;
+        this.site = site;
+        this.descricao = descricao;
     }
     
 
@@ -142,6 +149,16 @@ public class Ong {
     public void setUf(String uf) {
         this.uf = uf;
     }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
+    
     
     @Override
     public String toString(){

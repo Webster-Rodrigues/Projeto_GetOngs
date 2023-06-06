@@ -288,6 +288,7 @@ public class TelaAddOng extends javax.swing.JFrame {
             LocalidadesDAO dao = new LocalidadesDAO();
             for(Cidades cd : dao.buscarCidades()){
                cidadeComboBox.addItem(cd);
+
                
             }
         }

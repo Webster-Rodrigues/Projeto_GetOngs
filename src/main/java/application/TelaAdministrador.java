@@ -91,7 +91,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(attTabelaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         admMenu.setText("Administradores");
@@ -166,8 +166,8 @@ public class TelaAdministrador extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(14, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(51, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(53, Short.MAX_VALUE)))
         );
 
         pack();
@@ -253,7 +253,7 @@ public class TelaAdministrador extends javax.swing.JFrame {
            this.admTable.getColumnModel().getColumn(0).setPreferredWidth(1);
            this.admTable.getColumnModel().getColumn(1).setPreferredWidth(150);
            this.admTable.getColumnModel().getColumn(2).setPreferredWidth(150);
-           this.admTable.getColumnModel().getColumn(3).setPreferredWidth(70);
+           this.admTable.getColumnModel().getColumn(3).setPreferredWidth(100);
            this.admTable.getColumnModel().getColumn(4).setPreferredWidth(1);
            this.admTable.getColumnModel().getColumn(5).setPreferredWidth(70);
            this.admTable.getColumnModel().getColumn(6).setPreferredWidth(200);

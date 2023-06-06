@@ -171,6 +171,7 @@ public class TelaAddAdm extends javax.swing.JFrame {
                 dao.addAdms(adm);
                 dao.attIdColuna();
                 this.administradoresTable.setModel(new AdmsTableModel());
+                carregarTabelaAdms();
                 limparCampos();
                 
             }    
