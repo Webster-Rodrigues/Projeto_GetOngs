@@ -3,18 +3,25 @@ package entities;
 
 public class Cidades {
     private int id;
-    private int ufid;
+    private UFs uf; //TÁ ERRADO AQUI PRECISA SER private UFs ufid; por causa da associação c/ banco
     private String nome;
     
     public Cidades(){
         
     }
 
-    public Cidades(int id, int ufid, String nome) {
+    public Cidades(int id, UFs uf, String nome) {
         this.id = id;
-        this.ufid = ufid;
+        this.uf = uf;
         this.nome = nome;
     }
+    
+    public Cidades(int id, String nome){
+        this.id = id;
+        this.nome = nome;
+    }
+
+    
 
     public int getId() {
         return id;
@@ -24,12 +31,12 @@ public class Cidades {
         this.id = id;
     }
 
-    public int getUfid() {
-        return ufid;
+    public UFs getUf() {
+        return uf;
     }
 
-    public void setUfid(int ufid) {
-        this.ufid = ufid;
+    public void setUf(UFs uf) {
+        this.uf = uf;
     }
 
     public String getNome() {

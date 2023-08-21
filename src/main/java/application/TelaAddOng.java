@@ -24,7 +24,7 @@ public class TelaAddOng extends javax.swing.JFrame {
         super("Adicionar ONGs");
         initComponents();
         this.setLocationRelativeTo(null);
-        ativarCbxCidade();
+        //ativarCbxCidade();
         ativarUfs();
     }
 
@@ -56,7 +56,7 @@ public class TelaAddOng extends javax.swing.JFrame {
         UfComboBox = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        cadastrarOngButton = new javax.swing.JButton();
+        cadastrarOngButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,17 +93,18 @@ public class TelaAddOng extends javax.swing.JFrame {
 
         jLabel7.setText("Cidade");
 
+        UfComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UfComboBoxActionPerformed(evt);
+            }
+        });
+
         jLabel8.setText("UF");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Preencha os campos abaixo para cadastrar uma nova ONG");
 
-        cadastrarOngButton.setText("CADASTRAR");
-        cadastrarOngButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarOngButtonActionPerformed(evt);
-            }
-        });
+        cadastrarOngButton1.setText("CADASTRAR");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,48 +116,47 @@ public class TelaAddOng extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(voltarButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(70, 70, 70)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nomeCadOngTextField)
-                            .addComponent(emailCadOngTextField)
-                            .addComponent(telefoneCadOngTextField)
-                            .addComponent(causaCadOngTextField)
-                            .addComponent(cnpjCadOngTextField)
-                            .addComponent(siteCadOngTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addComponent(cadastrarOngButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel8)
-                        .addGap(26, 26, 26)
-                        .addComponent(UfComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addGap(48, 48, 48)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nomeCadOngTextField)
+                                    .addComponent(emailCadOngTextField)
+                                    .addComponent(telefoneCadOngTextField)
+                                    .addComponent(causaCadOngTextField)
+                                    .addComponent(cnpjCadOngTextField)
+                                    .addComponent(siteCadOngTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(UfComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(cadastrarOngButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel9))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(voltarButton)
-                .addGap(22, 22, 22)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel9)
-                .addGap(34, 34, 34)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nomeCadOngTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,13 +182,13 @@ public class TelaAddOng extends javax.swing.JFrame {
                     .addComponent(siteCadOngTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(UfComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(cadastrarOngButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                    .addComponent(UfComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cidadeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(cadastrarOngButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,48 +205,22 @@ public class TelaAddOng extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-       this.dispose();
-    }//GEN-LAST:event_voltarButtonActionPerformed
+    private void cidadeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeComboBoxActionPerformed
+        
+    }//GEN-LAST:event_cidadeComboBoxActionPerformed
 
     private void nomeCadOngTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeCadOngTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeCadOngTextFieldActionPerformed
 
-    private void cidadeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cidadeComboBoxActionPerformed
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_voltarButtonActionPerformed
 
-    private void cadastrarOngButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarOngButtonActionPerformed
-        String nome = nomeCadOngTextField.getText();
-        String email = emailCadOngTextField.getText();
-        Cidades cidades = (Cidades) cidadeComboBox.getSelectedItem();
-        UFs ufs = (UFs) UfComboBox.getSelectedItem();
-        String telefone = telefoneCadOngTextField.getText();
-        String causa = causaCadOngTextField.getText();
-        String cnpj = cnpjCadOngTextField.getText();
-        String site = siteCadOngTextField.getText();
-        
-        try{
-            OngDAO dao = new OngDAO();
-            Ong ong = new Ong(nome, email, String.valueOf(cidades), String.valueOf(ufs),telefone, causa, cnpj, site);
-            Ong cnpjOng = new Ong(cnpj);
-            
-            if(dao.verificarOng(cnpjOng)){
-                JOptionPane.showMessageDialog(null, "ONG já existe com esse CNPJ");
-            }
-            
-            else{
-                dao.addOng(ong);
-                JOptionPane.showMessageDialog(null, "ONG Cadastrada com sucesso");
-                limparCampos();
-                
-            }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a ONG\n" + e);
-        }
-    }//GEN-LAST:event_cadastrarOngButtonActionPerformed
+    private void UfComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UfComboBoxActionPerformed
+        cidadeComboBox.removeAllItems();
+        ativarCbxCidade();
+    }//GEN-LAST:event_UfComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,14 +260,15 @@ public class TelaAddOng extends javax.swing.JFrame {
     public void ativarCbxCidade(){
         try{
             LocalidadesDAO dao = new LocalidadesDAO();
-            for(Cidades cd : dao.buscarCidades()){
+            UFs ufcbx = (UFs) UfComboBox.getSelectedItem();
+            for(Cidades cd : dao.buscaPorUf(ufcbx)){
                cidadeComboBox.addItem(cd);
-
                
             }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Falha ao buscar as cidades cadastradas.");
+            
             
         }
     }
@@ -303,6 +278,7 @@ public class TelaAddOng extends javax.swing.JFrame {
             LocalidadesDAO dao = new LocalidadesDAO();
             for(UFs uf : dao.buscarUfs()){
                UfComboBox.addItem(uf);
+               ativarCbxCidade();
             }
         }
         catch(Exception e){
@@ -321,7 +297,7 @@ public class TelaAddOng extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Object> UfComboBox;
-    private javax.swing.JButton cadastrarOngButton;
+    private javax.swing.JButton cadastrarOngButton1;
     private javax.swing.JTextField causaCadOngTextField;
     private javax.swing.JComboBox<Object> cidadeComboBox;
     private javax.swing.JTextField cnpjCadOngTextField;
