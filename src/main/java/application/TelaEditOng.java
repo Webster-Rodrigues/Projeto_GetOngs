@@ -6,21 +6,20 @@ import DAO.OngDAO;
 import entities.Cidades;
 import entities.Ong;
 import entities.UFs;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 
 public class TelaEditOng extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaEditOng
-     */
     public TelaEditOng() {
         super("Edição de ONGs");
         initComponents();
         this.setLocationRelativeTo(null);
         ativarOngCbx();
-        ativarCbxCidade();
-        ativarUfs();
+        ativarCidadeInicialmente();
+        ativarUfsInicialmente();
+        TextFildInicial();
         
     }
 
@@ -119,6 +118,11 @@ public class TelaEditOng extends javax.swing.JFrame {
 
         atualizarButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         atualizarButton1.setText("ATUALIZAR");
+        atualizarButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -253,8 +257,19 @@ public class TelaEditOng extends javax.swing.JFrame {
     }//GEN-LAST:event_descricaoButtonActionPerformed
 
     private void ufsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ufsComboBoxActionPerformed
-        // TODO add your handling code here:
+        cidadesComboBox.removeAllItems();
+        ativarCbxCidade();
     }//GEN-LAST:event_ufsComboBoxActionPerformed
+
+    private void atualizarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarButton1ActionPerformed
+         try{
+            attOng();
+            JOptionPane.showMessageDialog(null, "ONG atualizada com sucesso.");
+        }
+        catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Falha ao atualizar ONG.\n" + e);
+        }
+    }//GEN-LAST:event_atualizarButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,13 +307,11 @@ public class TelaEditOng extends javax.swing.JFrame {
     }
     
     
-    public void ativarCbxCidade(){
+    public void ativarCidadeInicialmente(){
         try{
             LocalidadesDAO dao = new LocalidadesDAO();
             for(Cidades cd : dao.buscarCidades()){
                cidadesComboBox.addItem(cd);
-
-               
             }
         }
         catch(Exception e){
@@ -308,7 +321,7 @@ public class TelaEditOng extends javax.swing.JFrame {
     }
      
      
-    public void ativarUfs(){
+    public void ativarUfsInicialmente(){
         try{
             LocalidadesDAO dao = new LocalidadesDAO();
             for(UFs uf : dao.buscarUfs()){
@@ -319,6 +332,22 @@ public class TelaEditOng extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Falha ao buscar as Unidade Federativa cadastradas.");
         }
     }
+    
+     public void ativarCbxCidade(){
+        try{
+            LocalidadesDAO dao = new LocalidadesDAO();
+            UFs ufcbx = (UFs) ufsComboBox.getSelectedItem();
+            for(Cidades cd : dao.buscaPorUf(ufcbx)){
+               cidadesComboBox.addItem(cd);
+               
+               
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Falha ao buscar as cidades cadastradas.");
+        }
+    }
+    
      
     public void ativarOngCbx(){
         try{
@@ -331,6 +360,7 @@ public class TelaEditOng extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Falha ao buscar as ONGs");
         }
     }
+  
     
     public void TextFildInicial(){
         Ong ong = (Ong) ongsComboBox.getSelectedItem();
@@ -342,9 +372,9 @@ public class TelaEditOng extends javax.swing.JFrame {
         causaTextField.setText(ong.getCausa());
         cnpjTextField.setText(ong.getCnpj());
         siteTextField.setText(ong.getSite());
-        cidadesComboBox.getSelectedIndex();
-        ufsComboBox.setSelectedIndex(-1);
         
+        //cidadesComboBox.setSelectedIndex(3);
+        //ufsComboBox.setSelectedIndex(5);
     }
     
     public void attOng()throws Exception{

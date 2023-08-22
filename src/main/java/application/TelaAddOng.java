@@ -24,7 +24,6 @@ public class TelaAddOng extends javax.swing.JFrame {
         super("Adicionar ONGs");
         initComponents();
         this.setLocationRelativeTo(null);
-        //ativarCbxCidade();
         ativarUfs();
     }
 
@@ -105,6 +104,11 @@ public class TelaAddOng extends javax.swing.JFrame {
         jLabel9.setText("Preencha os campos abaixo para cadastrar uma nova ONG");
 
         cadastrarOngButton1.setText("CADASTRAR");
+        cadastrarOngButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarOngButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -221,6 +225,37 @@ public class TelaAddOng extends javax.swing.JFrame {
         cidadeComboBox.removeAllItems();
         ativarCbxCidade();
     }//GEN-LAST:event_UfComboBoxActionPerformed
+
+    private void cadastrarOngButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarOngButton1ActionPerformed
+        String nome = nomeCadOngTextField.getText();
+        String email = emailCadOngTextField.getText();
+        Cidades cidades = (Cidades) cidadeComboBox.getSelectedItem();
+        UFs ufs = (UFs) UfComboBox.getSelectedItem();
+        String telefone = telefoneCadOngTextField.getText();
+        String causa = causaCadOngTextField.getText();
+        String cnpj = cnpjCadOngTextField.getText();
+        String site = siteCadOngTextField.getText();
+        
+        try{
+            OngDAO dao = new OngDAO();
+            Ong ong = new Ong(nome, email, String.valueOf(cidades), String.valueOf(ufs),telefone, causa, cnpj, site);
+            Ong cnpjOng = new Ong(cnpj);
+            
+            if(dao.verificarOng(cnpjOng)){
+                JOptionPane.showMessageDialog(null, "ONG já existe com esse CNPJ");
+            }
+            
+            else{
+                dao.addOng(ong);
+                JOptionPane.showMessageDialog(null, "ONG Cadastrada com sucesso");
+                limparCampos();
+                
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a ONG\n" + e);
+        }
+    }//GEN-LAST:event_cadastrarOngButton1ActionPerformed
 
     /**
      * @param args the command line arguments
